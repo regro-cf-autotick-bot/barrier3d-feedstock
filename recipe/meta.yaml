@@ -11,7 +11,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - b3d = barrier3d.cli:barrier3d
@@ -19,10 +19,10 @@ build:
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - bmipy
     - click
     - distfit
@@ -37,6 +37,7 @@ test:
     - barrier3d
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
 
